@@ -20,15 +20,14 @@ var paths = {
   test: ['test/spec/**/*.js'],
   testRequire: [
     yeoman.app + '/bower_components/angular/angular.js',
+    yeoman.app + '/bower_components/angular-animate/angular-animate.js',
     yeoman.app + '/bower_components/angular-mocks/angular-mocks.js',
     yeoman.app + '/bower_components/angular-resource/angular-resource.js',
     yeoman.app + '/bower_components/angular-cookies/angular-cookies.js',
     yeoman.app + '/bower_components/angular-sanitize/angular-sanitize.js',
     yeoman.app + '/bower_components/angular-route/angular-route.js',
-    'test/mock/**/*.js',
-    'test/spec/**/*.js'
   ],
-  karma: 'karma.conf.js',
+  karma: 'test/karma.conf.js',
   views: {
     main: yeoman.app + '/index.html',
     files: [yeoman.app + '/views/**/*.html']
@@ -124,19 +123,22 @@ gulp.task('serve:prod', function() {
 });
 
 gulp.task('test', ['start:server:test'], function () {
+
   var testToFiles = paths.testRequire.concat(paths.scripts, paths.test);
+
   return gulp.src(testToFiles)
     .pipe($.karma({
       configFile: paths.karma,
       action: 'watch'
     }));
+
 });
 
 // inject bower components
 gulp.task('wiredep', function () {
   return gulp.src(paths.views.main)
     .pipe(wiredep({
-      directory: 'app/bower_components',
+      directory: yeoman.app + '/bower_components',
       ignorePath: '..'
     }))
   .pipe(gulp.dest(yeoman.app));
