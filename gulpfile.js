@@ -2,11 +2,12 @@
 'use strict';
 
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var openURL = require('open');
-var lazypipe = require('lazypipe');
-var rimraf = require('rimraf');
-var wiredep = require('wiredep').stream;
+
+var $           = require('gulp-load-plugins')();
+var openURL     = require('open');
+var lazypipe    = require('lazypipe');
+var rimraf      = require('rimraf');
+var wiredep     = require('wiredep').stream;
 var runSequence = require('run-sequence');
 
 var yeoman = {
@@ -16,7 +17,10 @@ var yeoman = {
 
 var paths = {
   scripts: [yeoman.app + '/scripts/**/*.js'],
-  styles: [yeoman.app + '/styles/**/*.css'],
+  styles: [
+    yeoman.app + '/styles/src/css/theme.less',
+    yeoman.app + '/styles/**/*.less'
+  ],
   test: ['test/spec/**/*.js'],
   testRequire: [
     yeoman.app + '/bower_components/angular/angular.js',
@@ -43,6 +47,7 @@ var lintScripts = lazypipe()
   .pipe($.jshint.reporter, 'jshint-stylish');
 
 var styles = lazypipe()
+  .pipe($.less)
   .pipe($.autoprefixer, 'last 1 version')
   .pipe(gulp.dest, '.tmp/styles');
 
@@ -51,7 +56,7 @@ var styles = lazypipe()
 ///////////
 
 gulp.task('styles', function () {
-  return gulp.src(paths.styles)
+  return gulp.src(paths.styles[0])
     .pipe(styles());
 });
 
@@ -73,7 +78,10 @@ gulp.task('start:server', function() {
     root: [yeoman.app, '.tmp'],
     livereload: true,
     // Change this to '0.0.0.0' to access the server from outside.
-    port: 9000
+    port: 9000,
+    middleware: function (connect) {
+     return [connect().use("/bower_components", connect.static("bower_components"))];
+   }
   });
 });
 
@@ -136,9 +144,10 @@ gulp.task('test', ['start:server:test'], function () {
 
 // inject bower components
 gulp.task('wiredep', function () {
+
   return gulp.src(paths.views.main)
     .pipe(wiredep({
-      directory: yeoman.app + '/bower_components',
+      directory: 'bower_components',
       ignorePath: '..'
     }))
   .pipe(gulp.dest(yeoman.app));
