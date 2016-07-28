@@ -209,6 +209,7 @@ p { margin: 0px 0px 3px;  }
   .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
   background-color: @navbar-default-bg;
   border: none;
+
   border-radius: @navbar-border-radius;
   @shadow: none;
 
@@ -216,6 +217,26 @@ p { margin: 0px 0px 3px;  }
   .navbar-nav > .active > a {
     background-color: @navbar-default-bg;
   }
+  .navbar-nav {
+    > li > a {
+      color: white;
+
+      &:hover,
+      &:focus {
+        color: white;
+        background-color: @primary-color;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: white;
+        background-color: @primary-color;
+      }
+    }
+  }
+
   .navbar-text,
   .navbar-brand{
     color: white;
@@ -227,11 +248,71 @@ p { margin: 0px 0px 3px;  }
   .navbar-brand{
     font-size: 20px;
   }
+
+  // Darken the responsive nav toggle
+  .navbar-toggle {
+    border-color: @primary-color;
+    &:hover,
+    &:focus {
+      background-color: @navbar-default-bg;
+    }
+    .icon-bar {
+      background-color: @navbar-inverse-toggle-icon-bar-bg;
+    }
+  }
 }
-.navbar-brand,
-.navbar-nav > li > a {
-  text-shadow: none;
+// Navbar nav links
+//
+// Builds on top of the `.nav` components with its own modifier class to make
+// the nav the full height of the horizontal nav (above 768px).
+
+.navbar-nav {
+  margin: 0 -@navbar-padding-horizontal;
+
+  > li > a {
+    padding-top:    15px;
+    padding-bottom: 15px;
+    line-height: @line-height-computed;
+    font-size: @font-size-h2;
+    border-bottom: 1px solid white;
+  }
 }
+
+// Navbar toggle
+//
+// Custom button for toggling the `.navbar-collapse`, powered by the collapse
+// JavaScript plugin.
+
+.navbar-toggle {
+  position: relative;
+  float: left;
+  margin-right: @navbar-padding-horizontal;
+  padding: 9px 10px;
+  .navbar-vertical-align(34px);
+  background-color: transparent;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 0px solid transparent;
+  border-radius: @border-radius-base;
+
+  // We remove the `outline` here, but later compensate by attaching `:hover`
+  // styles to `:focus`.
+  &:focus {
+    outline: 0;
+  }
+
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+  }
+
+  .icon-bar + .icon-bar {
+    margin-top: 6px;
+  }
+}
+
 
 // Inverted navbar
 .navbar-inverse {
