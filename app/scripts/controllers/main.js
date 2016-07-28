@@ -8,10 +8,15 @@
  * Controller of the pokedexApp
  */
 angular.module('pokedexApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function($scope) {
+    $scope.pokemons = [{
+      id:"001",
+      name:"bulbasaur",
+      type:["poison","grass"]
+    },{
+      id:"002",
+      name:"ivysaur",
+      type:["poison","grass"],
+      level:16
+    }];
   });

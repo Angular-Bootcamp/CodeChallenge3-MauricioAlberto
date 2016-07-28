@@ -73,8 +73,9 @@ p { margin: 0px 0px 3px;  }
 // Pokemon types labels
 // --------------------------------------------------
 
-.label:empty {
-  display: initial;
+.label{
+  margin-right: 5px;
+  &:empty{  display: initial; }
 }
 
 .grass  { .pokemon-variant(~"grass"); }

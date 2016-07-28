@@ -1,3 +1,51 @@
-<p>
-  main
-</p>
+<div class="container-fluid">
+ <div class="row">
+
+   <div class="col-xs-10 col-md-10">
+     <form role="search">
+      <div class="form-group">
+        <input type="text" class="form-control" ng-model="search" placeholder="Search">
+      </div>
+    </form>
+   </div>
+
+   <div class="col-xs-2 col-md-2"></div>
+
+ </div>
+</div>
+
+<!-- Evolutions Panel -->
+<div class="panel panel-default">
+  <div class="panel-body">
+
+    <!-- Pokemon  -->
+    <div ng-repeat="pokemon in pokemons | filter:search | orderBy:'id'">
+      <div class="media">
+
+        <div class="media-left">
+          <a href="#/pokemon/{{pokemon.id}}">
+            <img class="media-object img-thumbnail evolution-thumbnail"  ng-src="images/pokemons/{{pokemon.id}}.png">
+          </a>
+        </div>
+
+        <div class="media-body">
+
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <p class="text-right"><p class="text-right"><span class="text-muted">#{{pokemon.id}}</span></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-6"><h2 class="media-heading"><b>{{pokemon.name}}</b></h2></div>
+            <div class="col-xs-6 col-md-3"  ng-if="pokemon.level"><p><span class="text-muted">LV. {{pokemon.level}}</span></p></div>
+          </div>
+          <!-- Pokemon type labels -->
+          <span ng-repeat="type in pokemon.type" class="label {{type}}"></span>
+       </div>
+
+      </div>
+    </div>  <!-- END Pokemon  -->
+
+  </div>
+</div>

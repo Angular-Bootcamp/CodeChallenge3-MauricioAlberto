@@ -20,8 +20,8 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
+      .when('/pokemon/:id', {
+        templateUrl: 'views/description.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
