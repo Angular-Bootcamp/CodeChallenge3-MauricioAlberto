@@ -1,19 +1,10 @@
-'use strict';
+(function() {
+  'use strict';
 
-/**
- * @ngdoc overview
- * @name pokedexApp
- * @description
- * # pokedexApp
- *
- * Main module of the application.
- */
-angular
-  .module('pokedexApp', [
+  angular.module('pokedexApp', [
     'ngAnimate',
     'ngRoute'
-  ])
-  .config(function ($routeProvider) {
+  ]).config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -22,10 +13,22 @@ angular
       })
       .when('/pokemon/:id', {
         templateUrl: 'views/description.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
+        controller: 'DescriptionCtrl',
+        controllerAs: 'description'
+      })
+      .when('/caught', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+      })
+      .when('/box', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
       })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+})();
