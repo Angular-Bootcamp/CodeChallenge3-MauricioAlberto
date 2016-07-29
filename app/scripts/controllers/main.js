@@ -1,22 +1,27 @@
-'use strict';
+(function() {
+  'use strict';
 
-/**
- * @ngdoc function
- * @name pokedexApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the pokedexApp
- */
-angular.module('pokedexApp')
-  .controller('MainCtrl', function($scope) {
-    $scope.pokemons = [{
-      id:"001",
-      name:"bulbasaur",
-      type:["poison","grass"]
-    },{
-      id:"002",
-      name:"ivysaur",
-      type:["poison","grass"],
-      level:16
-    }];
-  });
+  var app = angular.module('pokedexApp');
+  var ControllerId = 'MainCtrl';
+
+  function Controller() {
+    var vm = this;
+
+    function activate() {
+      vm.pokemons = [{
+        id:"001",
+        name:"bulbasaur",
+        type:["poison","grass"]
+      },{
+        id:"002",
+        name:"ivysaur",
+        type:["poison","grass"],
+        level:16
+      }];
+    }
+
+    activate();
+  }
+
+  app.controller(ControllerId, Controller);
+})();

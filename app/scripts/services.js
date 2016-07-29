@@ -3,9 +3,11 @@
 
   var app = angular.module('pokedexApp');
   var ServiceId = 'getAllPokemons';
+  app.service(ServiceId, Service);
 
   function Service() {
-    this.pokemons = function() {
+    var vm = this;
+    vm.pokemons = function() {
       return [{
         id:"001",
         name:"bulbasaur",
@@ -18,7 +20,4 @@
       }];
     };
   }
-
-  app.service(ServiceId, Service);
-
 })();
