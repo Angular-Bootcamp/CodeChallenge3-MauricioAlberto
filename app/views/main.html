@@ -10,7 +10,7 @@
    </div>
 
    <div class="col-xs-2 col-md-2">
-      <span class="icon-sort"></span>
+      <span class="icon-sort"  ng-click="vm.order()" ></span>
    </div>
 
  </div>
@@ -21,7 +21,7 @@
   <div class="panel-body">
 
     <!-- Pokemon  -->
-    <div ng-repeat="pokemon in vm.pokemons | filter:search | orderBy:'id'">
+    <div ng-repeat="pokemon in vm.pokemons | filter:search | orderBy:propertyName:reverse">
       <div class="media">
 
         <div class="media-left">

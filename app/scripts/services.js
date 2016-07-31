@@ -2,7 +2,7 @@
   'use strict';
 
   var app = angular.module('pokedexApp');
-  var ServiceId = 'pokemons';
+  var ServiceId = 'Pokemons';
   app.service(ServiceId, Service);
 
   function Service() {
@@ -16,6 +16,11 @@
         name:"ivysaur",
         type:["poison","grass"],
         level:16
+      },{
+        id:"3",
+        name:"ivysaur",
+        type:["poison","grass"],
+        level:26
       }];
   }
 })();
