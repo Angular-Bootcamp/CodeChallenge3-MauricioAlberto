@@ -4,22 +4,12 @@
   var app = angular.module('pokedexApp');
   var ControllerId = 'MainCtrl';
 
-  function Controller() {
+  function Controller(pokemons) {
     var vm = this;
 
     function activate() {
-      vm.pokemons = [{
-        id:"001",
-        name:"bulbasaur",
-        type:["poison","grass"]
-      },{
-        id:"002",
-        name:"ivysaur",
-        type:["poison","grass"],
-        level:16
-      }];
+      vm.pokemons = pokemons.getAll;
     }
-
     activate();
   }
 
