@@ -7,8 +7,12 @@
 // --------------------------------------------------
 
 @import "variables.less";
+
 @import "mixins.less";
 
+@import "pokedex-font/style.less";
+
+//
 // Animated Hamburger Icon
 // --------------------------------------------------
 
@@ -31,6 +35,21 @@
   transform: rotate(-45deg);
 }
 
+//
+// Pokedex icon font
+// --------------------------------------------------
+
+.icon-pokeball active { color: @primary-color;}
+.icon-star active{ color: @quaternary-color; }
+
+.icon-sort {
+  font-size: 28px;
+  display: inline-block;
+  padding-top: 15px;
+}
+.icon-star, .icon-pokeball  {
+  font-size: 22px;
+}
 //
 // Typography
 // --------------------------------------------------

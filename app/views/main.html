@@ -9,7 +9,9 @@
     </form>
    </div>
 
-   <div class="col-xs-2 col-md-2"></div>
+   <div class="col-xs-2 col-md-2">
+      <span class="icon-sort"></span>
+   </div>
 
  </div>
 </div>
@@ -19,7 +21,7 @@
   <div class="panel-body">
 
     <!-- Pokemon  -->
-    <div ng-repeat="pokemon in pokemons | filter:search | orderBy:'id'">
+    <div ng-repeat="pokemon in vm.pokemons | filter:search | orderBy:'id'">
       <div class="media">
 
         <div class="media-left">
@@ -37,11 +39,16 @@
           </div>
 
           <div class="row">
-            <div class="col-xs-6 col-md-6"><h2 class="media-heading"><b>{{pokemon.name}}</b></h2></div>
+            <div class="col-xs-6 col-md-6"><h2 class="media-heading"><b>{{pokemon.name | capitalize }}</b></h2></div>
             <div class="col-xs-6 col-md-3"  ng-if="pokemon.level"><p><span class="text-muted">LV. {{pokemon.level}}</span></p></div>
           </div>
+
           <!-- Pokemon type labels -->
-          <span ng-repeat="type in pokemon.type" class="label {{type}}"></span>
+          <div class="row">
+            <div class="col-xs-8 col-sm-12"><span ng-repeat="type in pokemon.type" class="label {{type}}"></span></div>
+            <div class="col-xs-1 col-sm-3"><span class="icon-pokeball"></span></div>
+            <div class="col-xs-2 col-sm-3"><span class="icon-star"></span></div>
+          </div>
        </div>
 
       </div>
