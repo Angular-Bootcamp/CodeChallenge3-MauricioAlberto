@@ -3,8 +3,10 @@
 
   angular.module('pokedexApp', [
     'ngAnimate',
-    'ngRoute'
-  ]).config(function ($routeProvider) {
+    'ngRoute',
+    'LocalStorageModule'
+  ]).config(function ($routeProvider, localStorageServiceProvider) {
+
     $routeProvider
       .when('/', {
         title: 'All Pokemon',
@@ -33,6 +35,9 @@
       .otherwise({
         redirectTo: '/'
       });
+
+    localStorageServiceProvider.setPrefix('pokedexApp');
+    localStorageServiceProvider.setStorageType('localtorage');
   });
 
 })();
