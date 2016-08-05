@@ -1,97 +1,96 @@
 
 
-    <!-- Navbar header -->
-    <!-- <a class="navbar-brand" href="/">
-       <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-    </a>
-    <p class="navbar-text text-center">Description</p> -->
+<!-- Navbar header -->
+<!-- <a class="navbar-brand" href="/">
+   <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+</a>
+<p class="navbar-text text-center">Description</p> -->
 
-    <!-- Description pokemon container -->
-    <div class="container-fluid">
-      <div class="row">
-
-        <div class="col-xs-4 col-md-6">
-          <img src="images/pokemons/001.png" class="img-thumbnail">
-        </div>
-
-        <div class="col-xs-8 col-md-6">
-
-          <div class="row">
-            <div class="col-xs-8 col-md-12"><h1><b>#001 Bulbasaur</b></h1></div>
-            <div class="col-xs-1 col-md-3"><img src="images/icons/empty-plate.svg" class="icon" /></div>
-            <div class="col-xs-1 col-md-3"><img src="images/icons/star.svg"  class="icon" /></div>
-          </div>
-
-          <ul class="list-inline">
-						<li><b>0.7 m</b></li>
-						<li><b>6.9 kg</b></li>
-					</ul>
-
-          <p>
-            Bulbasaur is a small, quadruped Pokémon that has blue-green skin with darker green patches. It has red eyes with white pupils and pointe
-          </p>
-          <!-- Pokemon type labels -->
-          <span class="label poison"></span>
-          <span class="label grass"></span>
-        </div>
-      </div>
-    </div>
+<!-- Description pokemon container -->
+<div class="container-fluid">
+  <div class="row">
     <br>
-
-    <!-- - General information Panel -->
-    <div class="panel panel-default">
-      <div class="panel-heading">General Information</div>
-
-       <ul class="list-group">
-
-         <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-6 col-md-6"><strong>Hidden Abilities</strong></div>
-            <div class="col-xs-6 col-md-6">Clorophyll</div>
-          </div>
-         </li>
-
-         <li class="list-group-item">
-          <div class="row">
-            <div class="col-xs-6 col-md-6"><strong>Location</strong></div>
-            <div class="col-xs-6 col-md-6">Lumiose City</div>
-          </div>
-         </li>
-
-       </ul>
+    <div class="col-xs-4 col-md-6">
+      <img src="images/pokemons/{{vm.pokemon.id}}.png" class="img-thumbnail">
     </div>
 
-    <!-- Evolutions Panel -->
-    <div class="panel panel-default">
-      <div class="panel-heading">Evolution</div>
-      <div class="panel-body">
+    <div class="col-xs-8 col-md-6">
 
-        <!-- Pokemon evolution -->
-        <div class="media">
-
-          <div class="media-left">
-            <a href="/">
-              <img class="media-object img-thumbnail evolution-thumbnail"  src="images/pokemons/002.png">
-            </a>
-          </div>
-
-          <div class="media-body">
-
-            <div class="row">
-                <div class="col-xs-12 col-md-12"><p class="text-right"><p  class="text-right"><span class="text-muted">#002</span></p></div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-6 col-md-6"><h2 class="media-heading"><b>Ivysaur</b></h2></div>
-              <div class="col-xs-6 col-md-3"><p><span class="text-muted">LV. 16</span></p></div>
-            </div>
-            <!-- Pokemon type labels -->
-            <span class="label poison"></span>
-            <span class="label grass"></span>
-         </div>
-
-        </div>
-        <!-- END Pokemon evolution -->
-
+      <div class="row">
+        <div class="col-xs-8 col-md-12"><h1><b>#{{vm.pokemon.id}} {{vm.pokemon.name | capitalize }}</b></h1></div>
+        <span class="icon-star" ng-click="vm.battleBox(pokemon.id)" ng-class="{'active' : vm.isActive(pokemon.id, vm.box) }"></span>
+        <span class="icon-pokeball" ng-click="vm.caugth(pokemon.id)" ng-class="{'active' : vm.isActive(pokemon.id, vm.caugthUp) }"></span>
       </div>
+
+      <ul class="list-inline">
+				<li><b>{{vm.pokemon.height}}</b></li>
+				<li><b>{{vm.pokemon.weight}}</b></li>
+			</ul>
+
+      <p>
+        {{vm.pokemon.species}}
+      </p>
+      <!-- Pokemon type labels -->
+      <span ng-repeat="type in vm.pokemon.type" class="label {{type | lowercase}}"></span>
     </div>
+  </div>
+</div>
+<br>
+
+<!-- - General information Panel -->
+<div class="panel panel-default">
+  <div class="panel-heading">General Information</div>
+
+   <ul class="list-group">
+
+     <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><strong>Hidden Abilities</strong></div>
+        <div class="col-xs-6 col-md-6"><span ng-repeat="abilitie in vm.pokemon.abilities">{{abilitie | capitalize}}. </span></div>
+      </div>
+     </li>
+
+     <li class="list-group-item">
+      <div class="row">
+        <div class="col-xs-6 col-md-6"><strong>Location</strong></div>
+        <div class="col-xs-6 col-md-6">Lumiose City</div>
+      </div>
+     </li>
+
+   </ul>
+</div>
+
+<!-- Evolutions Panel -->
+<div class="panel panel-default">
+  <div class="panel-heading">Evolution</div>
+  <div class="panel-body">
+
+    <!-- Pokemon evolution -->
+    <div class="media">
+
+      <div class="media-left">
+        <a href="/">
+          <img class="media-object img-thumbnail evolution-thumbnail"  src="images/pokemons/{{vm.pokemon.id}}.png">
+        </a>
+      </div>
+
+      <div class="media-body">
+
+        <div class="row">
+            <div class="col-xs-12 col-md-12"><p class="text-right"><p  class="text-right"><span class="text-muted">#002</span></p></div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-6 col-md-6"><h2 class="media-heading"><b>Ivysaur</b></h2></div>
+          <div class="col-xs-6 col-md-3"><p><span class="text-muted">LV. 16</span></p></div>
+        </div>
+        <!-- Pokemon type labels -->
+        <span class="label poison"></span>
+        <span class="label grass"></span>
+     </div>
+
+    </div>
+    <!-- END Pokemon evolution -->
+
+  </div>
+</div>

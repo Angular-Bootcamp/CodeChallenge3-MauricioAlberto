@@ -45,11 +45,14 @@
 
           <!-- Pokemon type labels -->
           <div class="row">
-            <div class="col-xs-8 col-sm-12"><span ng-repeat="type in pokemon.type" class="label {{type}}"></span></div>
-            <div class="col-xs-1 col-sm-3"><span class="icon-pokeball"></span></div>
-            <div class="col-xs-2 col-sm-3"><span class="icon-star"></span></div>
+            <div class="col-xs-12 col-sm-12">
+              <span ng-repeat="type in pokemon.type" class="label {{type | lowercase}}"></span>
+              <span class="icon-star" ng-click="vm.battleBox(pokemon.id)" ng-class="{'active' : vm.isActive(pokemon.id, vm.box) }"></span>
+              <span class="icon-pokeball" ng-click="vm.caugth(pokemon.id)" ng-class="{'active' : vm.isActive(pokemon.id, vm.caugthUp) }"></span>
+            </div>
           </div>
-       </div>
+
+       </dilv>
 
       </div>
     </div>  <!-- END Pokemon  -->
