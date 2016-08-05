@@ -80,7 +80,10 @@ gulp.task('start:server', function() {
     // Change this to '0.0.0.0' to access the server from outside.
     port: 9000,
     middleware: function (connect) {
-     return [connect().use("/bower_components", connect.static("bower_components"))];
+     return [
+      connect().use("/bower_components", connect.static("bower_components")),
+      // data json experimental
+      connect().use("/data", connect.static("data"))];
    }
   });
 });

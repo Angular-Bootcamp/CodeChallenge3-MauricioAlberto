@@ -5,7 +5,7 @@
     'ngAnimate',
     'ngRoute',
     'LocalStorageModule'
-  ]).config(function ($routeProvider, localStorageServiceProvider) {
+  ]).config(function ($routeProvider) {
 
     $routeProvider
       .when('/', {
@@ -23,7 +23,7 @@
       .when('/caught', {
         title: 'Caught Pokemon',
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        controller: 'CaughtCtrl',
         controllerAs: 'vm'
       })
       .when('/box', {
@@ -35,9 +35,6 @@
       .otherwise({
         redirectTo: '/'
       });
-
-    localStorageServiceProvider.setPrefix('pokedexApp');
-    localStorageServiceProvider.setStorageType('localtorage');
   });
 
 })();

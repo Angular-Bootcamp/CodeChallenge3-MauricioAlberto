@@ -1,11 +1,3 @@
-
-
-<!-- Navbar header -->
-<!-- <a class="navbar-brand" href="/">
-   <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-</a>
-<p class="navbar-text text-center">Description</p> -->
-
 <!-- Description pokemon container -->
 <div class="container-fluid">
   <div class="row">
@@ -18,8 +10,8 @@
 
       <div class="row">
         <div class="col-xs-8 col-md-12"><h1><b>#{{vm.pokemon.id}} {{vm.pokemon.name | capitalize }}</b></h1></div>
-        <span class="icon-star" ng-click="vm.battleBox(pokemon.id)" ng-class="{'active' : vm.isActive(pokemon.id, vm.box) }"></span>
-        <span class="icon-pokeball" ng-click="vm.caugth(pokemon.id)" ng-class="{'active' : vm.isActive(pokemon.id, vm.caugthUp) }"></span>
+        <span class="icon-star" ng-click="vm.battleBox(vm.pokemon.id)" ng-class="{'active' : vm.isActive(vm.pokemon.id, vm.box) }"></span>
+        <span class="icon-pokeball" ng-click="vm.caugth(vm.pokemon.id)" ng-class="{'active' : vm.isActive(vm.pokemon.id, vm.caugthUp) }"></span>
       </div>
 
       <ul class="list-inline">
@@ -27,9 +19,7 @@
 				<li><b>{{vm.pokemon.weight}}</b></li>
 			</ul>
 
-      <p>
-        {{vm.pokemon.species}}
-      </p>
+      <p>{{vm.pokemon.species}}</p>
       <!-- Pokemon type labels -->
       <span ng-repeat="type in vm.pokemon.type" class="label {{type | lowercase}}"></span>
     </div>
@@ -45,15 +35,15 @@
 
      <li class="list-group-item">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><strong>Hidden Abilities</strong></div>
-        <div class="col-xs-6 col-md-6"><span ng-repeat="abilitie in vm.pokemon.abilities">{{abilitie | capitalize}}. </span></div>
+        <div class="col-xs-5 col-md-6"><strong>Hidden Abilities</strong></div>
+        <div class="col-xs-7 col-md-6"><span ng-repeat="abilitie in vm.pokemon.abilities">{{abilitie | capitalize}}. </span></div>
       </div>
      </li>
 
      <li class="list-group-item">
       <div class="row">
-        <div class="col-xs-6 col-md-6"><strong>Location</strong></div>
-        <div class="col-xs-6 col-md-6">Lumiose City</div>
+        <div class="col-xs-5 col-md-6"><strong>Location</strong></div>
+        <div class="col-xs-7 col-md-6">Lumiose City</div>
       </div>
      </li>
 

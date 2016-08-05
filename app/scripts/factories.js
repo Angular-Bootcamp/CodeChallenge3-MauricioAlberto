@@ -2,8 +2,8 @@
   'use strict';
 
   angular
-      .module('pokedexApp')
-      .factory('Pokemons', factory);
+    .module('pokedexApp')
+    .factory('Pokemons', factory);
 
   factory.$inject = ['$http', '$window', 'localStorage'];
 
