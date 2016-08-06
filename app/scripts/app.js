@@ -28,7 +28,7 @@
       .when('/box', {
         title: 'Battle Box',
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
+        controller: 'BattleBoxCtrl',
         controllerAs: 'vm'
       })
       .otherwise({
