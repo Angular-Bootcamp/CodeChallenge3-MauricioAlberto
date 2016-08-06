@@ -21,17 +21,16 @@
       vm.battleBox = pokemonAction.battleBox;
 
       vm.isActive = pokemonAction.isActive;
-    // We filter the array by id, the result is an array
-    // so we select the element 0
-    vm.id = $routeParams.id;
-    vm.pokemons = localStorage.get("pokemons");
+      // We filter the array by id, the result is an array
+      // so we select the element 0
+      vm.id = $routeParams.id;
+      vm.pokemons = localStorage.get("pokemons");
 
-    vm.pokemon = $filter('filter')(
-      vm.pokemons,
-      function(data){
+      vm.pokemon = $filter('filter')( vm.pokemons, function(data){
         return data.id == vm.id;
       })[0];
-    }
+
+      }
 
     activate();
   }

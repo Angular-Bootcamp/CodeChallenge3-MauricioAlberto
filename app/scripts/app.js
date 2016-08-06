@@ -3,8 +3,7 @@
 
   angular.module('pokedexApp', [
     'ngAnimate',
-    'ngRoute',
-    'LocalStorageModule'
+    'ngRoute'
   ]).config(function ($routeProvider) {
 
     $routeProvider

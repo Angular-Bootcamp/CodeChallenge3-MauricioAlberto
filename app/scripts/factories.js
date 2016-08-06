@@ -5,12 +5,14 @@
     .module('pokedexApp')
     .factory('Pokemons', factory);
 
-  factory.$inject = ['$http', '$window', 'localStorage'];
+  factory.$inject = ['$filter', '$http', '$window', 'localStorage'];
 
-  function factory($http, $window, localStorage) {
+  function factory($filter,$http, $window, localStorage) {
 
     return {
-        getPokemons: getPokemons
+        getPokemons: getPokemons,
+        //getCaughtList: getCaughtList,
+        //getBattleBox: getBattleBox,
     };
 
     function getPokemons() {
@@ -27,8 +29,8 @@
         console.log('XHR Failed for getPokemons.' + error.data);
         return localStorage.get("pokemons");
       }
-
     }
+
   }
 
 })();
