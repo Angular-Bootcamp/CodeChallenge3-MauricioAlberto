@@ -14,15 +14,23 @@
     vm.box = localStorage.get("battleBox") ? localStorage.get("battleBox") : [];
 
     vm.caugth = function(id) {
-      console.log(vm.caugthUp);
+
       var key = "caugthUp";
       // how to prevent duplicate in array push
       var index = vm.caugthUp.indexOf(id);
 
       // Add Pokemon
-      if( index === -1) { vm.caugthUp.push(id); }
+      if( index === -1) {
+        vm.caugthUp.push(id);
+      }
       // Delete Pokemon
-      else { vm.caugthUp.splice( index, 1); }
+      else {
+        if(vm.box.indexOf(id) >= 0) {
+          console.log("You cannot remove this pokemon, it is your Battle Box");
+          return;
+        }
+        vm.caugthUp.splice( index, 1);
+      }
 
       localStorage.set(key, vm.caugthUp);
 
@@ -30,13 +38,25 @@
 
     vm.battleBox = function(id) {
       var key = "battleBox";
-      // how to prevent duplicate in array push
       var index = vm.box.indexOf(id);
 
       // Add Pokemon
-      if( index === -1) { vm.box.push(id); }
+      if( index === -1) {
+        if(vm.caugthUp.indexOf(id) >= 0){
+          if (vm.box.length >= 6) {
+            console.log("Battle Box Limit exceeded");
+            return;
+          }else {
+            vm.box.push(id);
+          }
+        }else {
+          console.log("You haven't captured this Pokemon");
+        }
+      }
       // Delete Pokemon
-      else { vm.box.splice( index, 1); }
+      else {
+        vm.box.splice(index, 1);
+      }
 
       localStorage.set(key, vm.box);
     };
