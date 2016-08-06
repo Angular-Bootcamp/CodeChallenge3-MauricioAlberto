@@ -4,7 +4,7 @@
    <div class="col-xs-10 col-md-10">
      <form role="search">
       <div class="form-group">
-        <input type="text" class="form-control" ng-model="search" placeholder="Search">
+        <input type="text" class="form-control" ng-model="pokedexSearch" placeholder="Search">
       </div>
     </form>
    </div>
@@ -21,7 +21,7 @@
   <div class="panel-body">
 
     <!-- Pokemon  -->
-    <div ng-repeat="pokemon in vm.pokemons | filter:search | orderBy:propertyName:reverse">
+    <div ng-repeat="pokemon in vm.pokemons | filter:{ name: pokedexSearch }">
       <div class="media">
 
         <div class="media-left">
