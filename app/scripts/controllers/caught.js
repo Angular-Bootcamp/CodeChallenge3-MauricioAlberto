@@ -4,11 +4,11 @@
   var app = angular.module('pokedexApp');
   var ControllerId = 'CaughtCtrl';
 
-  Controller.$inject = ['$filter', 'Pokemons', 'orderByFilter', 'localStorage', 'pokemonAction'];
+  Controller.$inject = ['Pokemons', 'pokemonAction'];
 
   app.controller(ControllerId, Controller);
 
-  function Controller($filter, Pokemons, orderBy, localStorage, pokemonAction) {
+  function Controller(Pokemons, pokemonAction) {
     var vm = this;
 
     activate();
