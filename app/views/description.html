@@ -56,33 +56,43 @@
 
 <!-- Evolutions Panel -->
 <div class="panel panel-default">
+
   <div class="panel-heading">Evolution</div>
   <div class="panel-body">
 
     <!-- Pokemon evolution -->
-    <div class="media">
+    <div ng-repeat="pokemon in vm.evolutions">
+      <div class="media">
 
-      <div class="media-left">
-        <a href="/">
-          <img class="media-object img-thumbnail evolution-thumbnail"  ng-src="images/pokemons/{{vm.pokemon.id}}.png">
-        </a>
+        <div class="media-left">
+          <a href="#/pokemon/{{pokemon.id}}">
+            <img class="media-object img-thumbnail evolution-thumbnail"  ng-src="images/pokemons/{{pokemon.id}}.png">
+          </a>
+        </div>
+
+        <div class="media-body">
+
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <p class="text-right"><p class="text-right">#<span class="text-muted" ng-bind="pokemon.id"></span></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-6 col-md-6"><h2 class="media-heading"><b ng-bind="pokemon.name | capitalize"></b></h2></div>
+            <div class="col-xs-6 col-md-3"  ng-if="pokemon.level"><p>LV.<span class="text-muted"ng-bind="pokemon.level"></span></p></div>
+          </div>
+
+          <!-- Pokemon type labels -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12">
+              <span ng-repeat="type in pokemon.type" class="label {{type | lowercase}}"></span>
+            </div>
+          </div>
+
+       </div>
+
       </div>
-
-      <div class="media-body">
-
-        <div class="row">
-            <div class="col-xs-12 col-md-12"><p class="text-right"><p  class="text-right"><span class="text-muted">#002</span></p></div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-6 col-md-6"><h2 class="media-heading"><b>Ivysaur</b></h2></div>
-          <div class="col-xs-6 col-md-3"><p><span class="text-muted">LV. 16</span></p></div>
-        </div>
-        <!-- Pokemon type labels -->
-        <span class="label poison"></span>
-        <span class="label grass"></span>
-     </div>
-
     </div>
     <!-- END Pokemon evolution -->
 

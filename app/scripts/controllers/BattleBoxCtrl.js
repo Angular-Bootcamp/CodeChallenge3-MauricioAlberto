@@ -26,12 +26,10 @@
       };
 
       return Pokemons.getPokemons().then(function(pokemons) {
-
         vm.pokemons = pokemons;
         vm.order = function() {
           vm.pokemons = vm.pokemons.reverse();
         };
-
       });
 
     }
