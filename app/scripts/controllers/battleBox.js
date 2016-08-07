@@ -23,12 +23,13 @@
 
       vm.isActive = pokemonAction.isActive;
 
+      vm.listPokedex = function(item) {
+        return (vm.box.indexOf(item.id) >= 0);
+      };
+
       return Pokemons.getPokemons().then(function(pokemons) {
 
-        vm.pokemons = $filter('filter')( pokemons, function(data){
-          return (vm.box.indexOf(data.id) >= 0);
-        });
-
+        vm.pokemons = pokemons;
         vm.order = function() {
           vm.pokemons = vm.pokemons.reverse();
         };

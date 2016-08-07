@@ -14,6 +14,9 @@
    </div>
 
  </div>
+
+ <h3 ng-show="results.length == 0">You have not captured any Pokemon</h3>
+
 </div>
 
 <!-- Evolutions Panel -->
@@ -21,7 +24,7 @@
   <div class="panel-body">
 
     <!-- Pokemon  -->
-    <div ng-repeat="pokemon in vm.pokemons | filter:{ name: pokedexSearch }">
+    <div ng-repeat="pokemon in vm.pokemons | filter:vm.listPokedex | filter:{ name: pokedexSearch }  as results ">
       <div class="media">
 
         <div class="media-left">
@@ -56,6 +59,6 @@
 
       </div>
     </div>  <!-- END Pokemon  -->
-
   </div>
+
 </div>
