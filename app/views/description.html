@@ -3,7 +3,7 @@
   <div class="row">
     <br>
     <div class="col-xs-4 col-md-6">
-      <img src="images/pokemons/{{vm.pokemon.id}}.png" class="img-thumbnail">
+      <img  ng-src="images/gif/{{('000' + vm.pokemon.id).slice(-3)}}.gif" class="img-responsive center-block">
     </div>
 
     <div class="col-xs-8 col-md-6">
@@ -64,7 +64,7 @@
 
       <div class="media-left">
         <a href="/">
-          <img class="media-object img-thumbnail evolution-thumbnail"  src="images/pokemons/{{vm.pokemon.id}}.png">
+          <img class="media-object img-thumbnail evolution-thumbnail"  ng-src="images/pokemons/{{vm.pokemon.id}}.png">
         </a>
       </div>
 
