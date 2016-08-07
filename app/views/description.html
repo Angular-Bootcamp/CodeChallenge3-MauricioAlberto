@@ -58,6 +58,11 @@
 <div class="panel panel-default">
 
   <div class="panel-heading">Evolution</div>
+
+  <div ng-show="vm.evolutions.length == 0">
+    <br><div class="container-fluid"><p>This Pokemon is not part of an evolutionary line</p></div>
+  </div>
+
   <div class="panel-body">
 
     <!-- Pokemon evolution -->
