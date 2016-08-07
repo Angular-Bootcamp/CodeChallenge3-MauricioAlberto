@@ -4,24 +4,22 @@
   var app = angular.module('pokedexApp');
   var ControllerId = 'MainCtrl';
 
-  Controller.$inject = ['Pokemons', 'orderByFilter', 'localStorage', 'pokemonAction'];
+  Controller.$inject = ['Pokemons', 'orderByFilter', 'localStorage', 'pokedexAction'];
 
   app.controller(ControllerId, Controller);
 
-  function Controller(Pokemons, orderBy, localStorage, pokemonAction) {
+  function Controller(Pokemons, orderBy, localStorage, pokedexAction) {
     var vm = this;
 
     activate();
 
     function activate() {
-      vm.caugthUp = pokemonAction.caugthUp;
-      vm.box = pokemonAction.box;
+      vm.caugthUp = pokedexAction.caugthUp;
+      vm.box = pokedexAction.box;
 
-      vm.caugth = pokemonAction.caugth;
-
-      vm.battleBox = pokemonAction.battleBox;
-
-      vm.isActive = pokemonAction.isActive;
+      vm.caugth = pokedexAction.caugth;
+      vm.battleBox = pokedexAction.battleBox;
+      vm.isActive = pokedexAction.isActive;
 
       return  Pokemons.getPokemons().then(function(pokemons) {
 

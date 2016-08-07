@@ -2,29 +2,27 @@
   'use strict';
 
   var app = angular.module('pokedexApp');
-  var ControllerId = 'BattleBoxCtrl';
+  var ControllerId = 'CaughtCtrl';
 
-  Controller.$inject = ['Pokemons', 'pokemonAction'];
+  Controller.$inject = ['Pokemons', 'pokedexAction'];
 
   app.controller(ControllerId, Controller);
 
-  function Controller(Pokemons, pokemonAction) {
+  function Controller(Pokemons, pokedexAction) {
     var vm = this;
 
     activate();
 
     function activate() {
-      vm.caugthUp = pokemonAction.caugthUp;
-      vm.box = pokemonAction.box;
+      vm.caugthUp = pokedexAction.caugthUp;
+      vm.box = pokedexAction.box;
 
-      vm.caugth = pokemonAction.caugth;
-
-      vm.battleBox = pokemonAction.battleBox;
-
-      vm.isActive = pokemonAction.isActive;
+      vm.caugth = pokedexAction.caugth;
+      vm.battleBox = pokedexAction.battleBox;
+      vm.isActive = pokedexAction.isActive;
 
       vm.listPokedex = function(item) {
-        return (vm.box.indexOf(item.id) >= 0);
+        return (vm.caugthUp.indexOf(item.id) >= 0);
       };
 
       return Pokemons.getPokemons().then(function(pokemons) {

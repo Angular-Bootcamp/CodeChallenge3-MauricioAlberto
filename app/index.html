@@ -46,7 +46,7 @@
       </div>
     </nav>
 
-    <alert></alert>
+    <alert-directive></alert-directive>
 
     <div ng-view class="view view-animate"></div>
 
@@ -63,14 +63,17 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/filters.js"></script>
-        <script src="scripts/services.js"></script>
+        <script src="scripts/filters/capitalize.js"></script>
+        <script src="scripts/services/alertService.js"></script>
+        <script src="scripts/services/pokedexAction.js"></script>
+        <script src="scripts/directives/alertDirective.js"></script>
         <script src="scripts/modules.js"></script>
-        <script src="scripts/factories.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/description.js"></script>
-        <script src="scripts/controllers/caught.js"></script>
-        <script src="scripts/controllers/battleBox.js"></script>
+        <script src="scripts/factories/pokemonApi.js"></script>
+        <script src="scripts/factories/localStorage.js"></script>
+        <script src="scripts/controllers/MainCtrl.js"></script>
+        <script src="scripts/controllers/DescriptionCtrl.js"></script>
+        <script src="scripts/controllers/CaughtCtrl.js"></script>
+        <script src="scripts/controllers/BattleBoxCtrl.js"></script>
         <!-- endbuild -->
         <script type="text/javascript">
         $(document).ready(function () {
