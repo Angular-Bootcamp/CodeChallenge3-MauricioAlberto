@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  var app = angular.module('pokedexApp');
-  var ServiceId = 'pokemonAction';
-  app.service(ServiceId, Service);
+  angular
+    .module('pokedexApp')
+    .service('pokemonAction', Service);
 
-  Service.$inject = ['localStorage'];
+  Service.$inject = ['localStorage', 'alertService'];
 
-  function Service(localStorage) {
+  function Service(localStorage, alertService) {
     var vm = this;
 
     vm.caugthUp = localStorage.get("caugthUp") ? localStorage.get("caugthUp") : [];
@@ -26,7 +26,7 @@
       // Delete Pokemon
       else {
         if(vm.box.indexOf(id) >= 0) {
-          console.log("You cannot remove this pokemon, it is your Battle Box");
+          alertService.info("You cannot remove this pokemon, it is your Battle Box");
           return;
         }
         vm.caugthUp.splice( index, 1);
@@ -44,13 +44,13 @@
       if( index === -1) {
         if(vm.caugthUp.indexOf(id) >= 0){
           if (vm.box.length >= 6) {
-            console.log("Battle Box Limit exceeded");
+            alertService.warning("Battle Box Limit exceeded");
             return;
           }else {
             vm.box.push(id);
           }
         }else {
-          console.log("You haven't captured this Pokemon");
+          alertService.warning("You haven't captured this Pokemon");
         }
       }
       // Delete Pokemon
@@ -64,5 +64,69 @@
     vm.isActive = function(id, model) {
       return model.indexOf(id) > -1;
     };
+  }
+})();
+
+(function() {
+  'use strict';
+
+  angular
+    .module('pokedexApp')
+    .service('alertService', Service);
+
+  //Service.$inject = ['alertService'];
+
+  function Service($timeout) {
+    var vm = this;
+
+    vm.alertObj = {
+      show: false,
+      msg: '',
+      type: 'alert-success'
+    };
+
+    vm.alertTypes = ['alert-success', 'alert-info', 'alert-warning', 'alert-danger'];
+
+    vm.alert = function(type, msg) {
+      vm.alertObj.show = true;
+      vm.alertObj.msg = msg;
+      vm.alertObj.type = vm.alertTypes[type];
+
+      $timeout(function() {
+        vm.alertObj.show = false;
+      }, 4000);
+    };
+
+    vm.success  = function(msg){ vm.alert(0, msg);  };
+    vm.info     = function(msg){ vm.alert(1, msg);  };
+    vm.warning  = function(msg){ vm.alert(2, msg);  };
+    vm.danger   = function(msg){ vm.alert(3, msg);  };
+    vm.hide     = function(){ vm.alertObj.show = false; };
+
+  }
+
+})();
+
+(function() {
+  'use strict';
+
+  angular
+    .module('pokedexApp')
+    .directive('alert', directive);
+
+  function directive(alertService) {
+    var directive = {
+      restrict: 'AE',
+      //templateUrl: 'templateUrl',
+      template: '<div class="alert ng-hide"  ng-class="alert.type" ng-show="alert.show" >{{alert.msg}}</div>',
+      link: linkFunc,
+    };
+
+    return directive;
+
+    function linkFunc(scope, el, attr, ctrl) {
+      scope.alert = alertService.alertObj;
+    }
+
   }
 })();

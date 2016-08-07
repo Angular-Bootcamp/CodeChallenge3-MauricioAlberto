@@ -33,14 +33,14 @@
         //   vm.pokemons = orderBy(pokemons, "id" , vm.reverse);
         // };
 
-          vm.pokemons = pokemons;
-          localStorage.set("pokemons", pokemons);
+        vm.pokemons = pokemons;
+        localStorage.set("pokemons", pokemons);
 
-          vm.order = function() {
-            vm.pokemons = pokemons.reverse();
-          };
+        vm.order = function() {
+          vm.pokemons = pokemons.reverse();
+        };
 
-        });
+      });
 
     }
 
