@@ -1,0 +1,19 @@
+{
+  "name": "pokemon",
+  "version": "0.0.0",
+  "private": true,
+  "description": "pokemon",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.3",
+    "mongoose": "^4.3.7"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug": "node debug server.js"
+  },
+  "author": "mauricio",
+  "license": "MIT"
+}

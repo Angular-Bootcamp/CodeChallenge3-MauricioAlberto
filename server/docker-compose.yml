@@ -1,0 +1,19 @@
+web:
+  build: .
+  links:
+    - mongodb:mongodb
+  ports:
+    - "3000:3000"
+  volumes:
+    - ./application:/var/www
+    - ./logs:/var/log/supervisor
+  environment:
+    PORT: 3000
+    MONGODB_DATABASE: pokemon
+    NODE_ENV: development
+    COMMAND_SUPERVISORD: npm start # npm start OR npm run <SCRIPT>
+    MONGODB_PORT_27017_TCP_PORT: 27017
+mongodb:
+  image: mongo:latest
+  expose:
+    - "27017"
