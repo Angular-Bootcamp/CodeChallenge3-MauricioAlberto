@@ -5,7 +5,7 @@
     .module('pokedexApp')
     .directive('navbarDirective', directive);
 
-  function directive(alertService) {
+  function directive() {
     var directive = {
       restrict: 'AE',
       templateUrl: 'views/templates/navbar.html',
@@ -23,9 +23,9 @@
           return false;
         }else{
           scope.navbarId = "navbar-collapse";         // Active navbar collapse
-          $(".navbar-toggle").toggleClass("active");  
+          $(".navbar-toggle").toggleClass("active");
         }
-      }
+      };
 
     }
   }

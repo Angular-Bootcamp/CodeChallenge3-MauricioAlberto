@@ -17,10 +17,8 @@
     function setDataStorage(key, val) {
       if($window.localStorage) {
         $window.localStorage.setItem(key, JSON.stringify(val));
-        return true;
       }else {
         throw new Error('Sorry! No Web Storage support..');
-        return false;
       }
     }
 
@@ -29,7 +27,6 @@
         return  JSON.parse($window.localStorage.getItem(key));
       }else {
         throw new Error('Sorry! No Web Storage support..');
-        return false;
       }
     }
 
