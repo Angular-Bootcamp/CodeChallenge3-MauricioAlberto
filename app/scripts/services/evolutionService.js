@@ -23,7 +23,7 @@
       return $filter('filter')(pokemons, function(data){
         return (evolutions.customIndexOf(data.name) >= 0);
       });
-    }
+    };
 
   }
 

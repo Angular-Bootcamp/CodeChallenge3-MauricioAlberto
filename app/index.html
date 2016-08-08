@@ -22,29 +22,7 @@
 
     <!-- application content-->
 
-    <!-- Navbar header -->
-   <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container-fluid">
-
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" ng-class="{'back' : page.title == 'Description' }" data-toggle="collapse" data-target="#navbar-collapse-6" aria-expanded="false">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <p class="navbar-text text-center"><span ng-bind="page.title"></span></p>
-        </div>
-
-        <div class="navbar-collapse collapse" id="navbar-collapse-6" aria-expanded="false">
-          <ul class="nav navbar-nav">
-            <li><a href="#/"        class="text-center">All Pokemon</a></li>
-            <li><a href="#/caught"  class="text-center">Caught Pokemon</a></li>
-            <li><a href="#/box"     class="text-center">Battle Box</a></li>
-          </ul>
-        </div>
-
-      </div>
-    </nav>
+    <navbar-directive></navbar-directive>
 
     <alert-directive></alert-directive>
 
@@ -68,6 +46,7 @@
         <script src="scripts/services/pokedexAction.js"></script>
         <script src="scripts/services/evolutionService.js"></script>
         <script src="scripts/directives/alertDirective.js"></script>
+        <script src="scripts/directives/navbarDirective.js"></script>
         <script src="scripts/modules.js"></script>
         <script src="scripts/factories/pokemonApi.js"></script>
         <script src="scripts/factories/localStorage.js"></script>
@@ -76,12 +55,6 @@
         <script src="scripts/controllers/CaughtCtrl.js"></script>
         <script src="scripts/controllers/BattleBoxCtrl.js"></script>
         <!-- endbuild -->
-        <script type="text/javascript">
-        $(document).ready(function () {
-          $(".navbar-toggle").on("click", function (){
-            $(this).toggleClass("active");
-          });
-        });
-        </script>
+  
 </body>
 </html>

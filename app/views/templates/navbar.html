@@ -1,0 +1,31 @@
+<!-- Navbar header -->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button"
+          class="navbar-toggle collapsed"
+          ng-click="goBack(page.title)"
+          ng-class="{'back' : page.title == 'Description' }"
+          data-toggle="collapse"
+          data-target="#navbar-collapse"
+          aria-expanded="false">
+
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <p class="navbar-text text-center"><span ng-bind="page.title"></span></p>
+    </div>
+
+    <!-- ng-attr-id: navbar-collapse -->
+    <div class="navbar-collapse collapse" ng-attr-id="{{navbarId}}" aria-expanded="false">
+      <ul class="nav navbar-nav">
+        <li><a href="#/"        class="text-center">All Pokemon</a></li>
+        <li><a href="#/caught"  class="text-center">Caught Pokemon</a></li>
+        <li><a href="#/box"     class="text-center">Battle Box</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
