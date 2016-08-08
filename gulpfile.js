@@ -83,7 +83,7 @@ gulp.task('start:server', function() {
      return [
       connect().use("/bower_components", connect.static("bower_components")),
       // data json experimental
-      connect().use("/data", connect.static("data"))];
+      connect().use("/data", connect.static("server/application/data"))];
    }
   });
 });
